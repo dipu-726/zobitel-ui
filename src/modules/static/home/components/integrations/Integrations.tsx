@@ -71,7 +71,7 @@ const Integration = ({ data = DATA }: IntegrationProps) => {
           {data.map(({ id, icon, title, description }) => (
             <div
               key={id}
-              className="flex items-center gap-4 rounded-xl border p-4 shadow-sm transition hover:shadow-md bg-white"
+              className="flex items-center gap-4 rounded-xl border p-3 shadow-sm transition hover:shadow-md bg-white"
             >
               {/* Icon on the left */}
               <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-gray-50">
