@@ -17,7 +17,7 @@ const Home = () => {
       <Integrations />
       <LanguageSupport />
       <Testimonials />
-      <Faq />
+      <Faq heading="FAQs" />
     </div>
   );
 };
