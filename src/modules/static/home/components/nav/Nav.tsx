@@ -90,7 +90,7 @@ const Nav = () => {
                     rel="noopener noreferrer"
                   >
                     {item.title}{" "}
-                    <SquareArrowOutUpRight height={14} width={14} />
+                    <SquareArrowOutUpRight height={16} width={16} />
                   </a>
                 ) : (
                   <a
