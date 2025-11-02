@@ -166,7 +166,14 @@ function UseCaseCard({ data }) {
 }
 
 const UseCases = () => {
-  const plugin = React.useRef(Autoplay({ delay: 1500 }));
+  const plugin = React.useRef(
+    Autoplay({
+      delay: 1500,
+      stopOnFocusIn: false,
+      stopOnInteraction: false,
+      stopOnMouseEnter: true,
+    })
+  );
 
   return (
     <div className="px-4 py-20 mx-auto max-w-7xl">
@@ -177,15 +184,21 @@ const UseCases = () => {
         Zobotel AI turns voice interactions into automated workflows that ease
         workload and enhance satisfaction.
       </p>
-      <div className="p-8">
+      <div className="p-8 relative">
+        {/* Left fade overlay */}
+        <div className="absolute left-0 top-0 bottom-0 w-24 bg-linear-to-r from-white to-transparent z-10 pointer-events-none" />
+        {/* Right fade overlay */}
+        <div className="absolute right-0 top-0 bottom-0 w-24 bg-linear-to-l from-white to-transparent z-10 pointer-events-none" />
+
         <Carousel
           plugins={[plugin.current]}
           className="w-full"
           onMouseEnter={plugin.current.stop}
           onMouseLeave={plugin.current.reset}
           opts={{
-            align: "start",
+            align: "center",
             loop: true,
+            containScroll: false,
           }}
         >
           <CarouselContent className="-ml-2 md:-ml-4">
@@ -198,8 +211,8 @@ const UseCases = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          <CarouselPrevious className="z-20" />
+          <CarouselNext className="z-20" />
         </Carousel>
       </div>
     </div>
