@@ -2,11 +2,11 @@ import { MoveUpRight, SquareArrowOutUpRight } from "lucide-react";
 import React, { useState, useMemo } from "react";
 
 const BASE_NAV_LINKS = [
-  { title: "Pricing", path: "/pricing" },
+  { title: "Pricing", path: "https://aznaai.com/pricing" },
   { title: "Resources", path: "https://resources.aznaai.com" },
   {
     title: "Book A Demo",
-    cta: true, 
+    cta: true,
     path: "https://calendly.com/hello-aznaai/meet-and-greet",
   },
 ];
@@ -89,7 +89,8 @@ const Nav = () => {
                     target={item.path.startsWith("http") ? "_blank" : "_self"}
                     rel="noopener noreferrer"
                   >
-                    {item.title} <SquareArrowOutUpRight height={14} width={14} />
+                    {item.title}{" "}
+                    <SquareArrowOutUpRight height={14} width={14} />
                   </a>
                 ) : (
                   <a
@@ -110,7 +111,8 @@ const Nav = () => {
             {/* Auth Buttons */}
             <li>
               <a
-                href="/dashboard"
+                target="_blank"
+                href="https://aznaai.com/connect/home"
                 className="py-2 text-gray-700 hover:text-indigo-600 rounded-lg transition flex items-center gap-2"
               >
                 <svg
