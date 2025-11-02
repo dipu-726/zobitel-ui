@@ -2,6 +2,7 @@ import Faq from "./components/faq";
 import Features from "./components/features";
 import Hero from "./components/hero";
 import Integrations from "./components/integrations";
+import Languages from "./components/languages";
 import LanguageSupport from "./components/languageSupport";
 import Nav from "./components/nav";
 import Testimonials from "./components/testimonials";
@@ -15,6 +16,7 @@ const Home = () => {
       <UseCases />
       <Features />
       <Integrations />
+      <Languages />
       <LanguageSupport />
       <Testimonials />
       <Faq heading="FAQs" />
