@@ -1,10 +1,5 @@
 import React from "react";
 
-// cal.com
-// zoho CRM
-// zoom
-// google meet
-
 const DATA = [
   {
     id: 1,
