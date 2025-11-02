@@ -95,13 +95,14 @@ const cards = [
 function Features() {
   return (
     <div className="px-4 py-20 mx-auto max-w-7xl">
-      <h2 className="mb-1 text-3xl font-extrabold leading-tight text-gray-900">
+      <h2 className="text-center mb-1 text-3xl font-extrabold leading-tight text-gray-900">
         Redefining Conversations at Scale
       </h2>
-      <p className="mb-6 sm:mb-6 text-lg text-gray-500">
+      <p className="text-center mb-6 sm:mb-6 text-lg text-gray-500">
         AI that sells, supports, and learns — built for real-world volume,
         regulation, and ROI.
       </p>
+      <br />
       <div className="mx-auto grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {cards.map((card) => (
           <div

@@ -61,12 +61,13 @@ const Integration = ({ data = DATA }: IntegrationProps) => {
   return (
     <section className="px-4 py-20 mx-auto max-w-7xl">
       <div className="">
-        <h2 className="mb-1 text-3xl font-extrabold leading-tight text-gray-900">
+        <h2 className="text-center mb-1 text-3xl font-extrabold leading-tight text-gray-900">
           Integrations
         </h2>
-        <p className="mb-16 text-lg text-gray-500">
+        <p className="text-center mb-6 sm:mb-6 text-lg text-gray-500">
           Enhance your workflow by connecting the tools you use daily.
         </p>
+        <br />
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {data.map(({ id, icon, title, description }) => (
             <div

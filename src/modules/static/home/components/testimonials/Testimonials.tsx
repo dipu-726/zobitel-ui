@@ -36,20 +36,22 @@ const testimonials = [
 function Testimonials() {
   return (
     <div className="px-4 py-20 mx-auto max-w-7xl">
-      <h2 className="mb-1 text-3xl font-extrabold leading-tight text-gray-900">
+      <h2 className="text-center mb-1 text-3xl font-extrabold leading-tight text-gray-900">
         Zobotel AI Use Cases
       </h2>
-      <p className="mb-6 sm:mb-6 text-lg">
+      <p className="text-center mb-6 sm:mb-6 text-lg text-gray-500">
         Zobotel AI turns voice interactions into automated workflows that ease
         workload and enhance satisfaction.
       </p>
-      <div className="h-160 rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
+      <br />
+      <div className="rounded-md flex flex-col antialiased bg-white dark:bg-black dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
         <InfiniteMovingCards
           items={testimonials}
           direction="right"
           speed="slow"
         />
       </div>
+      <br />
     </div>
   );
 }

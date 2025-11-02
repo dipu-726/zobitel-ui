@@ -160,7 +160,7 @@ function UseCaseCard({ data, isCenter }) {
   };
 
   return (
-    <div className="flex flex-col p-6 bg-white rounded-2xl shadow-xs border border-gray-200 max-w-sm transition hover:shadow-md h-full relative">
+    <div className="flex flex-col p-6 bg-white rounded-2xl shadow-xs border border-gray-200 max-w-sm transition hover:shadow-md relative">
       {isCenter && <BorderBeam duration={3} size={400} />}
       {/* Icon */}
       <div className="relative">{icon}</div>
@@ -189,9 +189,7 @@ function UseCaseCard({ data, isCenter }) {
         type="button"
         onClick={handlePlayPause}
         className={`mt-5 inline-flex items-center gap-2 rounded-md border border-black px-4 py-2 text-sm transition-all duration-200 hover:scale-[1.02] active:scale-[0.97] w-auto self-start ${
-          isCenter
-            ? "bg-black text-white"
-            : "bg-white text-black"
+          isCenter ? "bg-black text-white" : "bg-white text-black"
         }`}
       >
         {isPlaying ? (
@@ -241,10 +239,10 @@ const UseCases = () => {
 
   return (
     <div className="px-4 py-20 mx-auto max-w-7xl">
-      <h2 className="mb-1 text-3xl font-extrabold leading-tight text-gray-900">
+      <h2 className="text-center mb-1 text-3xl font-extrabold leading-tight text-gray-900">
         Zobotel AI Use Cases
       </h2>
-      <p className="mb-6 sm:mb-6 text-lg">
+      <p className="text-center mb-6 sm:mb-6 text-lg text-gray-500">
         Zobotel AI turns voice interactions into automated workflows that ease
         workload and enhance satisfaction.
       </p>

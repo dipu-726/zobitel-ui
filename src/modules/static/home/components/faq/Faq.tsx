@@ -88,7 +88,7 @@ const Faq = ({
   return (
     <section className="px-4 py-20 mx-auto max-w-7xl">
       <div className="">
-        <h1 className="mb-4 text-3xl font-semibold md:mb-11 md:text-4xl">
+        <h1 className="text-center mb-4 text-3xl font-semibold md:mb-11 md:text-4xl">
           {heading}
         </h1>
         <Accordion type="single" collapsible>
