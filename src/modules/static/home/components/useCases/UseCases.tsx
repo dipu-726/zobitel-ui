@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";
 
 import {
@@ -8,6 +8,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+
+import { BorderBeam } from "@/components/ui/border-beam";
 
 import {
   CalendarCheck,
@@ -100,11 +102,49 @@ const useCasesData = [
     ],
     buttonText: "Live Demo",
   },
+  {
+    icon: (
+      <Headphones className="w-12 h-12 text-rose-500 bg-rose-50 p-2 rounded-lg" />
+    ),
+    title: "Customer Support Calls",
+    description:
+      "AI agent answers FAQs, logs tickets, and transfers complex issues to human agents seamlessly.",
+    stats: [
+      {
+        value: <Headphones className="w-5 h-5 text-gray-700" />,
+        label: "Instant query handling",
+      },
+      {
+        value: <CalendarCheck className="w-5 h-5 text-gray-700" />,
+        label: "Smooth handoff to agents",
+      },
+    ],
+    buttonText: "Live Demo",
+  },
+  {
+    icon: (
+      <Headphones className="w-12 h-12 text-rose-500 bg-rose-50 p-2 rounded-lg" />
+    ),
+    title: "Customer Support Calls",
+    description:
+      "AI agent answers FAQs, logs tickets, and transfers complex issues to human agents seamlessly.",
+    stats: [
+      {
+        value: <Headphones className="w-5 h-5 text-gray-700" />,
+        label: "Instant query handling",
+      },
+      {
+        value: <CalendarCheck className="w-5 h-5 text-gray-700" />,
+        label: "Smooth handoff to agents",
+      },
+    ],
+    buttonText: "Live Demo",
+  },
 ];
 
 // Lucide icons for play/pause
 
-function UseCaseCard({ data }) {
+function UseCaseCard({ data, isCenter }) {
   const { icon, title, description, stats, buttonText } = data;
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -120,7 +160,8 @@ function UseCaseCard({ data }) {
   };
 
   return (
-    <div className="flex flex-col p-6 bg-white rounded-2xl shadow-sm max-w-sm transition hover:shadow-md h-full">
+    <div className="flex flex-col p-6 bg-white rounded-2xl shadow-xs border border-gray-200 max-w-sm transition hover:shadow-md h-full relative">
+      {isCenter && <BorderBeam duration={3} size={400} />}
       {/* Icon */}
       <div className="relative">{icon}</div>
 
@@ -147,17 +188,21 @@ function UseCaseCard({ data }) {
       <button
         type="button"
         onClick={handlePlayPause}
-        className="mt-5 inline-flex items-center gap-2 rounded-md border border-black bg-black px-4 py-2 text-sm text-white transition-all duration-200 hover:scale-[1.02] active:scale-[0.97] w-auto self-start"
+        className={`mt-5 inline-flex items-center gap-2 rounded-md border border-black px-4 py-2 text-sm transition-all duration-200 hover:scale-[1.02] active:scale-[0.97] w-auto self-start ${
+          isCenter
+            ? "bg-black text-white"
+            : "bg-white text-black"
+        }`}
       >
         {isPlaying ? (
           <>
             <Pause className="w-4 h-4" />
-            Pause Demo
+            Pause Conversation
           </>
         ) : (
           <>
             <Play className="w-4 h-4" />
-            Play Demo
+            Play Conversation
           </>
         )}
       </button>
@@ -168,12 +213,31 @@ function UseCaseCard({ data }) {
 const UseCases = () => {
   const plugin = React.useRef(
     Autoplay({
-      delay: 1500,
-      stopOnFocusIn: false,
+      delay: 3000,
+      stopOnFocusIn: true,
       stopOnInteraction: false,
       stopOnMouseEnter: true,
     })
   );
+
+  const [api, setApi] = useState(null);
+  const [centerIndex, setCenterIndex] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+
+    const updateCenterIndex = () => {
+      const selectedIndex = api.selectedScrollSnap();
+      setCenterIndex(selectedIndex);
+    };
+
+    updateCenterIndex();
+    api.on("select", updateCenterIndex);
+
+    return () => {
+      api.off("select", updateCenterIndex);
+    };
+  }, [api]);
 
   return (
     <div className="px-4 py-20 mx-auto max-w-7xl">
@@ -191,6 +255,7 @@ const UseCases = () => {
         <div className="absolute right-0 top-0 bottom-0 w-24 bg-linear-to-l from-white to-transparent z-10 pointer-events-none" />
 
         <Carousel
+          setApi={setApi}
           plugins={[plugin.current]}
           className="w-full"
           onMouseEnter={plugin.current.stop}
@@ -201,13 +266,13 @@ const UseCases = () => {
             containScroll: false,
           }}
         >
-          <CarouselContent className="-ml-2 md:-ml-4">
+          <CarouselContent className="-ml-2 md:-ml-4 py-4">
             {useCasesData.map((item, index) => (
               <CarouselItem
                 key={index}
                 className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3"
               >
-                <UseCaseCard data={item} />
+                <UseCaseCard data={item} isCenter={index === centerIndex} />
               </CarouselItem>
             ))}
           </CarouselContent>
